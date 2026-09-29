@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>CYBERSLICE // 3D Multiplayer First-Person Collector</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 3D Canvas -->
+  <div id="canvas-container"></div>
+
+  <!-- In-Game First-Person Crosshair -->
+  <div id="crosshair">
+    <div class="crosshair-dot"></div>
+    <div class="crosshair-ring"></div>
+  </div>
+
+  <!-- Heads-Up Display (HUD) -->
+  <div id="hud">
+    <!-- Top Bar -->
+    <div class="hud-top">
+      <div class="hud-brand">
+        <span class="brand-glitch">CYBERSLICE</span>
+        <span class="brand-sub">// FP-SIMULATION</span>
+      </div>
+
+      <div class="score-card">
+        <div class="score-label">COLLECTED ENERGY</div>
+        <div class="score-display">
+          <span class="score-icon">✦</span>
+          <span id="score-value">0</span>
+          <span class="score-unit">PTS</span>
+        </div>
+      </div>
+
+      <div class="hud-controls">
+        <button id="mute-btn" class="hud-btn" title="Toggle Sound">🔊 Audio</button>
+      </div>
+    </div>
+
+    <!-- Leaderboard Panel (Top Right) -->
+    <div class="leaderboard-panel glass-card">
+      <div class="panel-header">
+        <span class="panel-title">🏆 LEADERBOARD</span>
+        <span class="live-dot" title="Live Synced"></span>
+      </div>
+      <div id="leaderboard-list" class="leaderboard-content">
+        <!-- Rows populated dynamically -->
+      </div>
+    </div>
+
+    <!-- Live Event Feed (Bottom Left) -->
+    <div id="event-feed" class="event-feed"></div>
+
+    <!-- Radar / Minimap (Bottom Right) -->
+    <div class="radar-panel glass-card">
+      <div class="radar-title">SECTOR RADAR</div>
+      <canvas id="radar-canvas" width="130" height="130"></canvas>
+      <div class="radar-legend">
+        <span><span class="dot-legend player-dot"></span>You</span>
+        <span><span class="dot-legend other-dot"></span>Rival</span>
+        <span><span class="dot-legend item-dot"></span>Core</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pointer Lock / Start Modal Overlay -->
+  <div id="blocker">
+    <div class="instructions-modal glass-card">
+      <div class="modal-badge">THREE.JS MULTIPLAYER SIMULATION</div>
+      <h1 class="modal-title">COLLECTOR PROTOCOL</h1>
+      <p class="modal-desc">
+        Roam through the virtual cyber-sanctuary in true <b>First-Person View</b>. Compete in real-time against other explorers to harvest scattered energy matrices before they vanish.
+      </p>
+
+      <div class="input-group">
+        <label for="player-name-input">PILOT CALLSIGN</label>
+        <input id="player-name-input" type="text" maxlength="15" placeholder="Enter your callsign..." />
+      </div>
+
+      <div class="controls-grid">
+        <div class="control-item">
+          <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd>
+          <span>Navigate</span>
+        </div>
+        <div class="control-item">
+          <kbd>MOUSE</kbd>
+          <span>Look Around</span>
+        </div>
+        <div class="control-item">
+          <kbd>SPACE</kbd>
+          <span>Jump</span>
+        </div>
+        <div class="control-item">
+          <kbd>SHIFT</kbd>
+          <span>Sprint</span>
+        </div>
+      </div>
+
+      <button id="start-btn" class="primary-btn">
+        <span>INITIALIZE & ENTER</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+
+      <div class="modal-footer">
+        <span class="status-indicator">● LIVE AUTHORITATIVE SERVER</span>
+        <span>Multi-Tab & Device Ready</span>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
